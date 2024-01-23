@@ -29,11 +29,12 @@ export default {
                   forceAbsolutePath: false,
                   utilizeAbsolute: false,
                 },
+                cleanupIds: {
+                  minify: false,
+                  remove: false,
+                  preservePrefixes: ['sprite-']
+                },
                 removeViewBox: false, // https://github.com/svg/svgo/issues/1128
-              },
-              cleanupIDs: {
-                minify: false,
-                remove: false,
               },
               convertPathData: false
             },
