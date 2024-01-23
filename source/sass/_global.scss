@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #163152;
+  background-color: #fdfdff;
+}
+
+.container {
+  max-width: 1170px;
+  margin-inline: auto;
+  padding-inline: 55px;
+
+  @media (max-width: 1024px) {
+    padding-inline: 35px;
+  }
+
+  @media (max-width: 767px) {
+    padding-inline: 15px;
+  }
+}
