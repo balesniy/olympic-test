@@ -41,6 +41,15 @@ module.exports = {
       requireSameDimensions: true,
       delay: 500
     })),
+    ...indexSections.map(({section, misMatchThreshold}) => ({
+      "label": `${section} content overflow`,
+      "url": "http://localhost:3000/index.html",
+      selectors: [`[data-test="${section}"]`],
+      misMatchThreshold: misMatchThreshold || 5,
+      requireSameDimensions: true,
+      delay: 500,
+      onReadyScript: `${section}Overflow.cjs`,
+    })),
   ],
   fileNameTemplate: '{scenarioLabel}_{viewportLabel}',
   "paths": {
