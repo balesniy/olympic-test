@@ -4,6 +4,8 @@ const indexSections = [
   {section: 'footer', misMatchThreshold: 2}
 ];
 
+const files = ['index', 'index-open-sans', 'index-inter']
+
 
 module.exports = {
   "id": "olympic-test-pp",
@@ -32,25 +34,25 @@ module.exports = {
     "transparency": 0.3,
     scaleToSameSize: false
   },
-  "scenarios": [
+  "scenarios": files.flatMap(file => [
     ...indexSections.map(({section, misMatchThreshold}) => ({
-      "label": `${section}`,
-      "url": "http://localhost:3000/index.html",
+      "label": `${section} ${file}`,
+      "url": `http://localhost:3000/${file}.html`,
       selectors: [`[data-test="${section}"]`],
       misMatchThreshold: misMatchThreshold || 5,
       requireSameDimensions: true,
       delay: 500
     })),
     ...indexSections.map(({section, misMatchThreshold}) => ({
-      "label": `${section} content overflow`,
-      "url": "http://localhost:3000/index.html",
+      "label": `${section} ${file} content overflow`,
+      "url": `http://localhost:3000/${file}.html`,
       selectors: [`[data-test="${section}"]`],
       misMatchThreshold: misMatchThreshold || 5,
       requireSameDimensions: true,
       delay: 500,
       onReadyScript: `${section}Overflow.cjs`,
     })),
-  ],
+  ]),
   fileNameTemplate: '{scenarioLabel}_{viewportLabel}',
   "paths": {
     "bitmaps_reference": "bitmaps_reference/test-pp",
@@ -62,7 +64,7 @@ module.exports = {
   "report": ["browser", "json"],
   "engine": "puppeteer",
   "engineOptions": {
-    "args": ["--no-sandbox"],
+    "args": ["--no-sandbox", "--disable-font-subpixel-positioning", "--font-render-hinting=none"],
     "gotoParameters": {"waitUntil": ["load", "networkidle0"], timeout: 20000},
   },
   "asyncCaptureLimit": 10,
