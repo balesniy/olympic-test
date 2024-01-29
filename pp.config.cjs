@@ -1,7 +1,7 @@
 const indexSections = [
-  {section: 'header', misMatchThreshold: 2},
-  {section: 'main', misMatchThreshold: 2},
-  {section: 'footer', misMatchThreshold: 2}
+  {section: 'header', misMatchThreshold: 1},
+  {section: 'main', misMatchThreshold: 1},
+  {section: 'footer', misMatchThreshold: 1}
 ];
 
 const files = ['index', 'index-open-sans', 'index-inter']
@@ -29,10 +29,7 @@ module.exports = {
   "onReadyScript": "onReady.cjs",
   "onBeforeScript": "onBefore.cjs",
   "resembleOutputOptions": {
-    "ignoreAntialiasing": true,
-    "errorType": "movementDifferenceIntensity",
-    "transparency": 0.3,
-    scaleToSameSize: false
+    "ignoreAntialiasing": true
   },
   "scenarios": files.flatMap(file => [
     ...indexSections.map(({section, misMatchThreshold}) => ({
@@ -64,7 +61,7 @@ module.exports = {
   "report": ["browser", "json"],
   "engine": "puppeteer",
   "engineOptions": {
-    "args": ["--no-sandbox", "--disable-font-subpixel-positioning", "--font-render-hinting=none"],
+    "args": ["--no-sandbox"],
     "gotoParameters": {"waitUntil": ["load", "networkidle0"], timeout: 20000},
   },
   "asyncCaptureLimit": 10,

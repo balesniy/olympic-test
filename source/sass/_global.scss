@@ -5,6 +5,9 @@ body {
   line-height: 24px;
   color: #163152;
   background-color: #fdfdff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .open-sans {
