@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host --open",
-    "test": "backstop test --config=pp.config.cjs",
-    "ref": "backstop reference --config=pp.config.cjs",
+    "test": "backstop test --config=pp-local.config.cjs",
+    "ref": "backstop reference --config=pp-local.config.cjs",
+    "test-slider": "backstop test --config=slider.config.cjs",
+    "ref-slider": "backstop reference --config=slider.config.cjs",
     "test-content": "vitest content.test.ts --ui",
     "build": "vite build --emptyOutDir",
     "preview": "vite preview --open",
